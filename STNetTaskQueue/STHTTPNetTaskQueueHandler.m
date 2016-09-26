@@ -144,7 +144,8 @@ static NSMapTable *STHTTPNetTaskToSessionTask;
 - (NSURL *)requestURL
 {
     if (_baseURL) {
-        return [_baseURL URLByAppendingPathComponent:_task.uri];
+        NSString *newURLString = [[_baseURL absoluteString] stringByAppendingPathComponent:_task.uri];
+        return [NSURL URLWithString:newURLString];
     }
     return [NSURL URLWithString:_task.uri];
 }
